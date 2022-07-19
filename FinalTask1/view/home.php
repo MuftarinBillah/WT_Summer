@@ -1,5 +1,5 @@
 <?php
-include "../control/reg_process.php"
+include "../control/process.php"
 ?>
 
 <html>

@@ -1,5 +1,5 @@
 <?php
-   include ("../Model/db.php");
+   include ("../model/db.php");
 
    $firstname= $lastname=$age=$email=$password=$confirmpassword=$programming_language=$designation=$filename=$a=$b=$c=$d=$f=$g=$h="";
    
@@ -42,7 +42,8 @@
    {
        $d= "Designation =".$designation ;
    }
-   else{
+   else
+   {
        $d= "Please select designation ";
    }
    
@@ -104,10 +105,7 @@
    {
        $g=  "Please enter a valid password";
    }
-//    else if($password != $confirmpassword)
-//    {
-//        $g= "Password didn't match";
-//    }
+
    else
    {
        $g= "Password is valid";
@@ -116,11 +114,13 @@
 
     $filename=$_FILES["myfile"]["name"];
     //if filesize is more than 2mb it will not upload
-    if (($file_size = $_FILES['myfile']['size'] > 2097152)){
+    if (($file_size = $_FILES['myfile']['size'] > 2097152))
+    {
            $h= 'File too large. File must be less than 2 megabytes.'; 
     }
    
-    else{
+    else
+    {
        if(move_uploaded_file($_FILES["myfile"]["tmp_name"], "../files/".$_FILES["myfile"]["name"]))
        {
            $h= "File Uploaded";
@@ -139,7 +139,8 @@
    echo "No data Saved";
    }
    
-   else{
+   else
+   {
     $mydb=new DB();
     $connobj=$mydb->opencon();
     $mydb->InsertData($firstname, $lastname, $age, $designation, $programming_language, $email, $password, $filename, "employee",$connobj);
@@ -151,10 +152,12 @@
    $mydb = new DB();
    $connobj = $mydb->opencon();
    $results= $mydb->showUser("employee",$connobj);
-   if($results->num_rows>0){
+   if($results->num_rows>0)
+   {
        echo "<table>";
 
-       while($row=$results->fetch_assoc()){
+       while($row=$results->fetch_assoc())
+       {
            echo "<tr>";
            echo "<td>".$row["fname"]."</td>";
            echo "<td>".$row["lname"]."</td>";
@@ -168,7 +171,8 @@
        }
        echo "</table>";
    }
-   else{
+   else
+   {
        echo "No Data Found";
    }
    ?>

@@ -1,8 +1,9 @@
 <?php
 class DB
 {
-    //connection function
-    function opencon(){
+    
+    function opencon()
+    {
     $DBHostname="localhost";
     $DBUsername="root";
     $DBPass="";
@@ -16,23 +17,27 @@ if($conn->connect_error)
 return $conn;
     }
 //query function
-    function InsertData($fname, $lname, $age, $designation, $planguage, $email, $password, $picture, $tablename, $conn){
+    function InsertData($fname, $lname, $age, $designation, $planguage, $email, $password, $picture, $tablename, $conn)
+    {
     $sqlstr="INSERT INTO $tablename(fname, lname, age, designation, planguage, email, password, picture) values ('$fname', '$lname', $age, '$designation', '$planguage', '$email', '$password', '$picture')";
 
 if($conn->query($sqlstr)==TRUE)
 {
     echo "Data Inserted Successfully";
 }
-else{
+else
+{
     echo "cant insert".$conn->err;
 }
 }
-function showUser($tablename, $conn){
+function showUser($tablename, $conn)
+{
     $sqlstr="SELECT * FROM $tablename";
     return $conn->query($sqlstr);
 }
 //close function
-function closecon($conn){
+function closecon($conn)
+{
     $conn->close();
 }
 
